@@ -38,7 +38,7 @@ function Column({ title, leads, onDragOver, onDrop, onDragStart }: ColumnProps) 
             key={lead.id}
             layoutId={lead.id}
             draggable
-            onDragStart={(e) => onDragStart(e, lead)}
+            onDragStart={(e) => onDragStart(e as any, lead)}
             className="bg-slate-900 border border-slate-800 p-4 rounded-xl shadow-sm cursor-move hover:border-blue-500/50 hover:bg-slate-800/50 transition-colors group"
           >
             <div className="flex justify-between items-start mb-3">

@@ -37,10 +37,15 @@ function Column({ title, leads, onDragOver, onDrop, onDragStart }: ColumnProps) 
           <motion.div
             key={lead.id}
             layoutId={lead.id}
-            draggable
-            onDragStart={(e) => onDragStart(e as any, lead)}
-            className="bg-slate-900 border border-slate-800 p-4 rounded-xl shadow-sm cursor-move hover:border-blue-500/50 hover:bg-slate-800/50 transition-colors group"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
+            <div
+              draggable
+              onDragStart={(e) => onDragStart(e, lead)}
+              className="bg-slate-900 border border-slate-800 p-4 rounded-xl shadow-sm cursor-move hover:border-blue-500/50 hover:bg-slate-800/50 transition-colors group"
+            >
             <div className="flex justify-between items-start mb-3">
               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">#{lead.sr_no || 'N/A'}</span>
               <button className="opacity-0 group-hover:opacity-100 text-slate-500 hover:text-white transition-opacity">
@@ -76,6 +81,7 @@ function Column({ title, leads, onDragOver, onDrop, onDragStart }: ColumnProps) 
                 {new Date(lead.updated_at).toLocaleDateString([], { month: 'short', day: 'numeric' })}
               </div>
             </div>
+              </div>
           </motion.div>
         ))}
         {leads.length === 0 && (

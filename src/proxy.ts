@@ -10,6 +10,8 @@ export async function proxy(request: NextRequest) {
   }
 }
 
+export default proxy
+
 export const config = {
   matcher: [
     /*
@@ -17,7 +19,7 @@ export const config = {
      * - api (API routes)
      * - _next (internal Next.js routes)
      * - favicon.ico (favicon file)
-     * - static files (images, etc)
+     * - images/assets
      */
     '/((?!api|_next|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
